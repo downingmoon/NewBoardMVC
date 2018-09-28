@@ -29,6 +29,7 @@ public class BoardDAO {
 		return dao;
 	}
 	
+	//전체 페이지 수 가져오기
 	public int getBoardPageCount(int btype) {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -52,19 +53,26 @@ public class BoardDAO {
 		return result; 
 	}
 	
-	public ArrayList<BoardVO> getBoardList(int btype) {
+	//게시판 리스트 가져오기
+	public ArrayList<BoardVO> getBoardList(int btype, int page) {
 		ArrayList<BoardVO> result = new ArrayList<BoardVO>();
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
+		int startIndex = Var.boardItemCount * page;
+		int endIndex = startIndex - Var.boardItemCount;
 		try {
 			con = getConn();
 			String query = String.format(" select " + " bid, btitle, "
 					+ " to_char(bregdate, 'YYYY-MM-DD hh24:mi') as bregdate " + " from t_board%d ORDER BY bid desc ", btype);
 			
+			//select A.* from( select ROWNUM as RNUM, z.* from ( select * from t_board%d order by bid desc ) z where ROWNUM <= ?) A where A.RNUM > ?
+			
 			ps = con.prepareStatement(query);
 			rs = ps.executeQuery();
+			// ps.setInt(1, startIndex);
+			// ps.setInt(2, endIndex);
 			while (rs.next()) {
 				int bid = rs.getInt("bid");
 				String btitle = rs.getString("btitle");

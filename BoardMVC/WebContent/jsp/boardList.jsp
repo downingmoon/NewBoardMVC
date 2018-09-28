@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="kr.itedu.boardmvc.*"%>
 <%@ page errorPage="errorPage.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	ArrayList<BoardVO> result = (ArrayList<BoardVO>)request.getAttribute("data");
 %>
@@ -67,6 +68,10 @@
 			}
 			 
 		%>
+		</div>
+		<div>
+			<c:forEach begin="1" end="${entireBoardPage}" step="1" var="cnt">
+			
 		</div>
 		
 		<button onclick="location.href='boardInsert.bo?btype=${btype}'">글쓰기2</button>

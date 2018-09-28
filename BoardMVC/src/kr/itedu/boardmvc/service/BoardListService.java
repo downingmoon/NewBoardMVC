@@ -14,10 +14,10 @@ public class BoardListService {
 		return result;
 	}
 	
-	public ArrayList<BoardVO> getBoardList(int btype) {
+	public ArrayList<BoardVO> getBoardList(int btype, int page) {
 		ArrayList<BoardVO> result = null;
 		BoardDAO dao = BoardDAO.getInstance();
-		result = dao.getBoardList(btype);
+		result = dao.getBoardList(btype, page);
 		
 		return result; 
 	}

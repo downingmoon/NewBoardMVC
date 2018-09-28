@@ -18,14 +18,20 @@ public class BoardListAction implements Action {
 		
 		BoardListService service = new BoardListService();
 		
+		int page = Utils.getParamInt(request.getParameter("page"));
+		if(page == 0) {
+			page = 1;
+		}
+		
 		int btype = Utils.getParamInt(request.getParameter("btype"));
 		int entireBoardPage = service.getBoardPageCount(btype);
 		
-		ArrayList<BoardVO> data = service.getBoardList(btype);
+		ArrayList<BoardVO> data = service.getBoardList(btype, page);
 		request.setAttribute("title", Var.TITLES[btype]);
 		request.setAttribute("content", "boardList");
 		request.setAttribute("btype", btype);
 		request.setAttribute("data", data);
+		request.setAttribute("page", page);
 		request.setAttribute("entireBoardPage", entireBoardPage);
 		
 		
