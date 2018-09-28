@@ -30,7 +30,7 @@ public class BoardListAction implements Action {
 		
 		
 		
-		return forward;
+		return forward; 
 	}
 
 }

@@ -19,7 +19,7 @@ public class BoardListService {
 		BoardDAO dao = BoardDAO.getInstance();
 		result = dao.getBoardList(btype);
 		
-		return result;
+		return result; 
 	}
 
 }
