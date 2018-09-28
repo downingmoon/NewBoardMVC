@@ -42,7 +42,7 @@ public class BoardDAO {
 			if(rs.next()) {
 				result = rs.getInt(0);
 			}
-		} catch(SQLException e) {
+		} catch(SQLException e) { 
 			
 		}catch(Exception e) {
 			
