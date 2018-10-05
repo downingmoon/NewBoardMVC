@@ -29,8 +29,8 @@ public class BoardListAction implements Action {
 		ArrayList<BoardVO> data = service.getBoardList(btype, page);
 		request.setAttribute("title", Var.TITLES[btype]);
 		request.setAttribute("content", "boardList");
-		request.setAttribute("btype", btype);
 		request.setAttribute("data", data);
+		request.setAttribute("btype", btype);
 		request.setAttribute("page", page);
 		request.setAttribute("entireBoardPage", entireBoardPage);
 		

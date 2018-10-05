@@ -71,6 +71,7 @@
 		</div>
 		<div>
 			<c:forEach begin="1" end="${entireBoardPage}" step="1" var="cnt">
+			</c:forEach>
 			
 		</div>
 		
